@@ -1,0 +1,17 @@
+html
+    head
+        style
+            include style.css
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.core.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js')
+
+
+        title= title
+        script.
+            let data = "#{data}";
+            let data_array = JSON.parse(data.replace(/&quot;/g, '"'));
+            //console.log(data_array);
+
+    body
+        script(src='./1041.js')
