@@ -46,7 +46,7 @@ let mongodb1  = function(para) {
             if (err) throw err;
             var dbo = db.db("test1");
 
-            dbo.collection("site96").insertOne(para, function(err, res) {
+            dbo.collection("site98").insertOne(para, function(err, res) {
                 if (err){
                     console.log(err);
                     resolve();

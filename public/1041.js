@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 20, bottom: 30, left: 270},
     width = 1300 - margin.left - margin.right,
-    height = 750 - margin.top - margin.bottom;
+    height = 700 - margin.top - margin.bottom;
 
 
 var x = d3.scaleTime().range([0, width]);
@@ -104,7 +104,7 @@ var jsonCircles = [
 // Scale the range of the data
 //x.domain([0, 1]);
 //x.domain(d3.extent(jsonCircles, function(d) { return new Date(d.Milestone); }));
-x.domain([new Date("2018-09-2"), new Date("2018-9-11")]);
+x.domain([new Date("2018-08-31"), new Date("2018-9-23")]);
 //x.domain([new Date("2018-07-15"), new Date("2018-9-10")]);
 //y.domain(d3.extent(jsonCircles, function(d) { return new Date(d.Milestone); }));
 //y.domain([0, 500000]);
@@ -154,14 +154,14 @@ let circles6 = svg.selectAll("circle6")
 
 let linearScale1 = d3.scaleLinear()
     //.domain([0,3500])
-    .domain([0,80000])
+    .domain([0,5000])
     .range([0,1]);
 //console.log(data_array.sort_layer2_node_take_right_max_value[0].value);
 //console.log(linearScale1(50));
 
 
 let line1 = svg.selectAll("line1")
-    .data(data_array.sort_layer2_node_take_right)
+    .data(data_array.node1_array)
     .enter()
     .append("line")
     .attr("clip-path","url(#rect-clip)")
@@ -193,7 +193,7 @@ let line1 = svg.selectAll("line1")
 
 
 let line2 = svg.selectAll("line2")
-    .data(data_array.layer3_array)
+    .data(data_array.node2_array)
     .enter()
     .append("line")
     .attr("clip-path","url(#rect-clip)")
@@ -223,6 +223,9 @@ let line2 = svg.selectAll("line2")
     .attr("stroke-width", 1)
     .attr("stroke","black");
 
+
+
+/*
 let line4 = svg.selectAll("line4")
     .data(data_array.node4_array)
     .enter()
@@ -253,3 +256,5 @@ let line4 = svg.selectAll("line4")
     })
     .attr("stroke-width", 1)
     .attr("stroke","blue");
+
+    */
