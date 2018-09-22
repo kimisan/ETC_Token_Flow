@@ -225,7 +225,7 @@ let line2 = svg.selectAll("line2")
 
 
 
-/*
+
 let line4 = svg.selectAll("line4")
     .data(data_array.node4_array)
     .enter()
@@ -256,5 +256,3 @@ let line4 = svg.selectAll("line4")
     })
     .attr("stroke-width", 1)
     .attr("stroke","blue");
-
-    */

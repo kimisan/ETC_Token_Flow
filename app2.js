@@ -113,21 +113,21 @@ app.get('/', async (req, res, next) => {
     let node0_array = await Promise.all([_.find(docs, function(o) {
         return "0x08a98920ec43025440e8cc4418967e0a681caf8ee064549397481f4849148124" == o._id;
     })]);
-    //console.log(layer1_array)
 
-
+    //Add D3,js address
     let address=[];
+
+    //Add Node0 address
+    let node0_address={
+        "address" : node0_array[0].to
+    };
+    address.push(node0_address);
 
     /*
 
-    let obj2={
-        "address" : max_token_flow_tx[0].from
-    }
-    let obj3={
+     let obj3={
         "address" : max_token_flow_tx[0].to
     }
-
-    address.push(obj2)
     address.push(obj3)
 
     //console.log(max_token_flow_tx[0].timestamp_unix);
@@ -153,7 +153,25 @@ app.get('/', async (req, res, next) => {
         //console.log("Finded Node1")
         //console.log(find_Node1[0])
 
-        for(let j=0;j<find_Node1[0].length;j++)
+        //Sort
+        let find_Node1_sort = await Promise.all([
+            _.sortBy(find_Node1[0], [function(o) {
+                //console.log(o.value);
+                return o.value;
+            }])]);
+        //console.log(find_Node1_sort[0]);
+
+        //Take Right
+        let find_Node1_sort_take_right = await Promise.all([
+            _.takeRight(find_Node1_sort[0],100)
+        ]);
+        console.log(find_Node1_sort_take_right[0]);
+
+        //Remap value
+        let find_Node1_1=find_Node1_sort_take_right;
+
+
+        for(let j=0;j<find_Node1_1[0].length;j++)
         {
             //console.log("i "+i +" j: "+j);
             //console.log("Node0 TImestamp : "+node0_array[i].timestamp_unix);
@@ -188,7 +206,6 @@ app.get('/', async (req, res, next) => {
 
 
     //Node2
-
     let node2_array=[];
     for (let i=0;i<node1_array.length;i++){
         //console.log("------------");
@@ -231,14 +248,12 @@ app.get('/', async (req, res, next) => {
                 //console.log("Node3 is ahead of  Node2, Failed");
             }
         }
-
-
-
     }
 
 
     //console.log("node3_array");
     //console.log(layer3_array);
+    //let layer3_array = node2_array;
 
     //node4
     /*
@@ -282,6 +297,7 @@ app.get('/', async (req, res, next) => {
 
     }
     */
+
 
     console.log("All Address");
     console.log(address.length);
